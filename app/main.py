@@ -29,7 +29,10 @@ def main():
             elif cmd_path:
                 sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
             else:
-                sys.stdout.write(f"{splitted_command[1]} not found\n")
+                if os.path.isfile(splitted_command[0]):
+                    os.system(command)
+                else:
+                    sys.stdout.write(f"{splitted_command[1]} not found\n")
 
             
 
