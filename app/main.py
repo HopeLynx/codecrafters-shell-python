@@ -1,9 +1,11 @@
 import sys
+import os
 
 
 def main():
     command_list = ["exit","echo","type"]
     # Wait for user input
+    PATH = os.environ.get("PATH")
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -19,7 +21,15 @@ def main():
             if splitted_command[1] not in command_list:
                 sys.stdout.write(f"{splitted_command[1]} not found\n")
             else:
-                sys.stdout.write(f"{splitted_command[1]} is a shell builtin\n")
+                cmd_path = None
+                paths = PATH.split(":")
+                for path in paths:
+                    if os.path.isfile(f"{path}/{splitted_command[1]}"):
+                        cmd_path = f"{path}/{splitted_command[1]}"
+                if cmd_path:
+                    sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
+                else:
+                    sys.stdout.write(f"{splitted_command[1]} is a shell builtin\n")
 
             
 
