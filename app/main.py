@@ -24,10 +24,10 @@ def main():
                 cmd_path = None
                 paths = PATH.split(":")
                 for path in paths:
-                    if os.path.isfile(f"{path}/{splitted_command[1]}"):
+                    if os.path.exists(f"{path}/{splitted_command[1]}"):
                         cmd_path = f"{path}/{splitted_command[1]}"
                 if cmd_path:
-                    sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
+                    sys.stdout.write(f"{splitted_command[1]} is {cmd_path}/{splitted_command[1]}\n")
                 else:
                     sys.stdout.write(f"{splitted_command[1]} is a shell builtin\n")
 
