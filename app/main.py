@@ -14,9 +14,7 @@ def main():
         elif splitted_command[0] == command_list[0]:
             return 0
         elif splitted_command[0] == command_list[1]:
-            for word in splitted_command[1:]:
-                sys.stdout.write(f"{word} ")
-            sys.stdout.write(f"\n")
+            sys.stdout.write(f"{" ".join(splitted_command[1:])}\n")
             
 
 if __name__ == "__main__":
