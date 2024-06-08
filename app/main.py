@@ -1,11 +1,20 @@
 import sys
 import os
 
+PATH = os.environ["PATH"].split(":")
+
+def _find_exec(name):
+    for dir in PATH:
+        path = os.path.join(dir, name)
+        if os.path.exists(path):
+            return path
+    else:
+        return None
 
 def main():
     command_list = ["exit","echo","type"]
     # Wait for user input
-    PATH = os.environ.get("PATH")
+    # PATH = os.environ.get("PATH")
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -30,8 +39,8 @@ def main():
             else:
                 sys.stdout.write(f"{splitted_command[1]} not found\n")
         else:
-            if os.path.isfile(splitted_command[0]):
-                    os.system(command)
+            if path := _find_exec(splitted_command[0]):
+                exitcode = os.spawnv(os.P_WAIT, path, splitted_command)
             else:
                 sys.stdout.write(f"{splitted_command[0]}: command not found\n")
                     
