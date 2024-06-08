@@ -27,7 +27,7 @@ def main():
             sys.stdout.write(f"{" ".join(splitted_command[1:])}\n")
         elif splitted_command[0] == command_list[2]:
             cmd_path = None
-            paths = PATH.split(":")
+            paths = PATH
             for path in paths:
                 if os.path.exists(f"{path}/{splitted_command[1]}"):
                     cmd_path = f"{path}/{splitted_command[1]}"
