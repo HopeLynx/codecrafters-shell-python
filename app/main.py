@@ -44,7 +44,7 @@ def main():
             if os.path.exists(splitted_command[1]):
                 os.chdir(splitted_command[1])
             else:
-                return f"{splitted_command[1]}: No such file or directory\n"
+                sys.stdout.write(f"{splitted_command[1]}: No such file or directory\n")
         else:
             if path := _find_exec(splitted_command[0]):
                 exitcode = os.spawnv(os.P_WAIT, path, splitted_command)
