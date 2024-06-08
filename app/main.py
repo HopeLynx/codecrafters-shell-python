@@ -41,8 +41,8 @@ def main():
         elif splitted_command[0] == command_list[3]:
             sys.stdout.write(f"{os.getcwd()}\n")
         elif splitted_command[0] == command_list[4]:
-            if os.path.exists(splitted_command[1]):
-                os.chdir(splitted_command[1])
+            if os.path.exists(os.path.expanduser(splitted_command[1])):
+                os.chdir(os.path.expanduser(splitted_command[1]))
             else:
                 sys.stdout.write(f"{splitted_command[1]}: No such file or directory\n")
         else:
