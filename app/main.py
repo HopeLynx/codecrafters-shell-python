@@ -11,12 +11,8 @@ def main():
         sys.stdout.flush()
         command = input()
         splitted_command = command.split()
-        if splitted_command[0] not in command_list:
-            if os.path.isfile(splitted_command[0]):
-                    os.system(command)
-            else:
-                sys.stdout.write(f"{splitted_command[0]}: command not found\n")
-        elif splitted_command[0] == command_list[0]:
+        
+        if splitted_command[0] == command_list[0]:
             return 0
         elif splitted_command[0] == command_list[1]:
             sys.stdout.write(f"{" ".join(splitted_command[1:])}\n")
@@ -33,8 +29,12 @@ def main():
                 sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
             else:
                 sys.stdout.write(f"{splitted_command[1]} not found\n")
-
-            
+        else:
+            if os.path.isfile(splitted_command[0]):
+                    os.system(command)
+            else:
+                sys.stdout.write(f"{splitted_command[0]}: command not found\n")
+                    
 
 if __name__ == "__main__":
     main()
