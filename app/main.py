@@ -12,7 +12,7 @@ def _find_exec(name):
         return None
 
 def main():
-    command_list = ["exit","echo","type"]
+    command_list = ["exit","echo","type","pwd"]
     # Wait for user input
     # PATH = os.environ.get("PATH")
     while True:
@@ -38,6 +38,8 @@ def main():
                 sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
             else:
                 sys.stdout.write(f"{splitted_command[1]} not found\n")
+        elif splitted_command[0] == command_list[3]:
+            sys.stdout.write(f"{os.getcwd()}")
         else:
             if path := _find_exec(splitted_command[0]):
                 exitcode = os.spawnv(os.P_WAIT, path, splitted_command)
