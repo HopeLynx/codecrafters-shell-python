@@ -10,6 +10,7 @@ def main():
         command = input()
         if command not in command_list:
             sys.stdout.write(f"{command}: command not found\n")
+            continue
 
 if __name__ == "__main__":
     main()
