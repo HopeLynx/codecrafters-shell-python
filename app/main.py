@@ -17,7 +17,7 @@ def main():
             sys.stdout.write(f"{" ".join(splitted_command[1:])}\n")
         elif splitted_command[0] == command_list[2]:
             if splitted_command[1] not in command_list:
-                sys.stdout.write(f"{splitted_command[1]}: command not found\n")
+                sys.stdout.write(f"{splitted_command[1]} not found\n")
             else:
                 sys.stdout.write(f"{splitted_command[1]} is a shell builtin\n")
 
