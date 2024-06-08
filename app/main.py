@@ -23,10 +23,11 @@ def main():
             for path in paths:
                 if os.path.exists(f"{path}/{splitted_command[1]}"):
                     cmd_path = f"{path}/{splitted_command[1]}"
-            if cmd_path:
-                sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
-            elif splitted_command[1] in command_list:
+
+            if splitted_command[1] in command_list:
                 sys.stdout.write(f"{splitted_command[1]} is a shell builtin\n")
+            elif cmd_path:
+                sys.stdout.write(f"{splitted_command[1]} is {cmd_path}\n")
             else:
                 sys.stdout.write(f"{splitted_command[1]} not found\n")
 
